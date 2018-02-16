@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Force_Directed_Maps
 {
-    public partial class Form1 : Form
+    public partial class GraphScreen : Form
     {
-        public Form1()
+        public GraphScreen()
         {
             InitializeComponent();
         }

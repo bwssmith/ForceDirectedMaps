@@ -1,6 +1,6 @@
 ﻿namespace Force_Directed_Maps
 {
-    partial class Form1
+    partial class GraphScreen
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.SuspendLayout();
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(900, 600);
+            this.panel1.TabIndex = 0;
+            // 
+            // GraphScreen
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(982, 753);
+            this.Controls.Add(this.panel1);
+            this.Name = "GraphScreen";
+            this.Text = "Graph Screen";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        public System.Windows.Forms.Panel panel1;
     }
 }
 
