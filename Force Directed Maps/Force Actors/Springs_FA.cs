@@ -8,6 +8,7 @@ namespace Force_Directed_Maps
 {
     public class Springs_FA : IForceActor
     {
+        public string ForceName() { return "Hookes' Springs"; }
         public void ActOn(Diagram d)
         {
             //efficincy -it dosn't hvae to check every node to see if it has connectors

@@ -7,6 +7,7 @@ namespace Force_Directed_Maps
 {
     public interface IForceActor
     {
+        string ForceName();
         void ActOn(Diagram d);
     }
 }

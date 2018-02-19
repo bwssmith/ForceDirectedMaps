@@ -47,6 +47,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "GraphScreen";
             this.Text = "Graph Screen";
+            this.Load += new System.EventHandler(this.GraphScreen_Load);
             this.ResumeLayout(false);
 
         }

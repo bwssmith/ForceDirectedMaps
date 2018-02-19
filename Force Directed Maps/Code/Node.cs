@@ -16,44 +16,46 @@ namespace Force_Directed_Maps
         public List<Node> Children;
         public Vector NetDisp;
         public Vector Velocity;
-        protected Color hColour;
+        public Color hColour;
         protected Vector2f hLocation;
         protected int hSize;
         protected CircleShape shape;
         protected Diagram diagramm;
         public bool Moving;
-        protected Random rng = new Random((int)DateTime.Now.Ticks);
-        public Node(Color colour, int size, string t, Diagram d)
+        public Node latest;
+        protected Random rand = new Random(Guid.NewGuid().GetHashCode());
+        System.Windows.Forms.ToolTip Tip = new System.Windows.Forms.ToolTip();
+        public Node(string t, Diagram d)
         {
-            hLocation = new Vector2f(rng.Next(100,800),rng.Next(100,500));
-            Debug.WriteLine("added a node to " + hLocation.X + ", " + hLocation.Y);
+            //hLocation = new Vector2f(rng.Next(100,800),rng.Next(100,500));
+            //Debug.WriteLine("added a node to " + hLocation.X + ", " + hLocation.Y);
             Children = new List<Node>();
-            hColour = colour;
-            hSize = size;
-            NetDisp = new Vector(0, 0);
-            Velocity = new Vector(0, 0);
+            NetDisp = new Vector();
+            Velocity = new Vector();
             shape = new CircleShape();
-            CreateShape();
             Text = t;
+            latest = null;
             diagramm = d;
-            //SetupCircle();
-            //stationary = a;
+            //Tip.SetToolTip(this, t);
         }
 
         #region Adding children
-        public void AddChild()
+        public virtual void AddChild()
         {
-            int a = GetNextInt();
-            if(a!=-1)
-            {
-                Children.Add(new Node(Color.Blue, 8, "henlo", diagramm));
-            }
+
         }
 
-        private int GetNextInt()
+        protected int GetNextInt()
         {
             for (int i = 0; i < 8; i++) try { if (Children[i] == null) Debug.WriteLine("h"); } catch { return i; }
+            Debug.WriteLine("Oops too many nodes added already");
             return -1;
+        }
+        protected int Place()
+        {
+            int a = rand.Next(200, 300);
+            if (a%2==1) a *= -1;
+            return a;
         }
         #endregion
 
@@ -76,7 +78,6 @@ namespace Force_Directed_Maps
         #endregion
 
         #region Mechanics for movement
-        //check this works
         public void Move()
         {
             Moving = true;
@@ -123,7 +124,12 @@ namespace Force_Directed_Maps
         public virtual int Mass { get { return (int)(Math.Pow(hSize, 2) / 8); } }
         #endregion
 
-        #region Drawing stuff
+        #region Drawing n visuals
+        public bool IsHovering(Vector2f MousePos)
+        {
+            if (MousePos.X < X + (hSize / 2) && MousePos.X > X - (hSize / 2) && MousePos.Y < Y + (hSize / 2) && MousePos.Y > Y - (hSize / 2)) return true;
+            return false;
+        }
         protected void CreateShape()
         {
             shape.FillColor = hColour;
@@ -139,6 +145,7 @@ namespace Force_Directed_Maps
             try
             {
                 shape.Position = new Vector2f(X - (hSize / 2), Y - (hSize / 2));
+                shape.FillColor = hColour;
                 target.Draw(shape, states);
             }
             catch
@@ -160,9 +167,38 @@ namespace Force_Directed_Maps
 
     public class Title : Node
     {
-        public Title()
+        public Title(string t, Diagram d) : base(t, d)
         {
+            hColour = Color.Black;
+            hSize = 20;
+            hLocation = new Vector2f(Globals.X_Con / 2, Globals.Y_Con / 2);
+            ID = new UnID("0");
+            CreateShape();
+        }
+        public override void AddChild()
+        {
+            int a = GetNextInt();
+            if(a!=-1)
+            { 
+                Node temp = new Box("", diagramm, this, a);
+                Children.Add(temp);
+                diagramm.NodeList.Add(temp.ID, temp);
+                latest = temp;
+            }
+        }
+    }
 
+    public class Box : Node
+    {
+        public Box(string t, Diagram d, Node p, int c):base(t,d)
+        {
+            hSize = 8;
+            hColour = Color.Blue;
+            ID = new UnID(c, p.ID);
+            //hLocation = p.Location + new Vector2f(Rand.Num(150, 150, true), Rand.Num(150, 150, true));
+            hLocation = p.Location + new Vector2f(Place(), Place());
+            Debug.WriteLine("Placing node at " + X + ", " + Y);
+            CreateShape();
         }
     }
 }
