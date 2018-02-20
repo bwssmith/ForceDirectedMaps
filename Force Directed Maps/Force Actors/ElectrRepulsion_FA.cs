@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Force_Directed_Maps
 {
-    public class ElectrRepulsio_FA : IForceActor
+    public class ElectroRepulsion_FA : IForceActor
     {
+        public string ForceName() { return "Electrostatic repulsion"; }
         public void ActOn(Diagram d)
         {
             //this works - is there a tidier way to do this tho?

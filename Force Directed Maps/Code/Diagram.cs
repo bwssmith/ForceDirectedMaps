@@ -18,21 +18,21 @@ namespace Force_Directed_Maps
         {
             NodeList = new Dictionary<UnID, Node>();
             Forces = new List<IForceActor>();
-            NodeList.Add(new UnID("0"), new Node(Color.Black, 20, "Starter", this));
-            System.Threading.Thread.Sleep(20);
-            NodeList.Add(new UnID("0.0"), new Node(Color.Blue, 8, "baby1", this));
-            NodeList[new UnID("0")].Children.Add(NodeList[new UnID("0.0")]);
-            System.Threading.Thread.Sleep(20);
-            NodeList.Add(new UnID("0.1"), new Node(Color.Red, 8, "baby2", this));
-            NodeList[new UnID("0")].Children.Add(NodeList[new UnID("0.1")]);
-            System.Threading.Thread.Sleep(20);
-            NodeList.Add(new UnID("0.2"), new Node(Color.Green, 8, "baby3", this));
-            NodeList[new UnID("0")].Children.Add(NodeList[new UnID("0.2")]);
-            NodeList[new UnID("0")].AddChild();
-            //Forces.Add(new GravDown_FA());
-            Forces.Add(new Springs_FA());
-            Forces.Add(new CornerRep_FA());
-            Forces.Add(new ElectrRepulsio_FA());
+            Title n = new Title("Memes", this);
+            NodeList.Add(n.ID, n);
+            //for (int i = 0; i < 6; i++)
+            //{ n.AddChild(); System.Threading.Thread.Sleep(20); }
+            //Forces.Add(new Springs_FA());
+            //Forces.Add(new CornerRep_FA());
+            //Forces.Add(new ElectrRepulsio_FA());
+        }
+        public Diagram(List<IForceActor> forces)
+        {
+            NodeList = new Dictionary<UnID, Node>();
+            Forces = forces;
+            Title n = new Title("Memes", this);
+            NodeList.Add(n.ID, n);
+            //for (int i = 0; i < 6; i++){ n.AddChild();}
         }
         public void Draw(RenderTarget target, RenderStates states)
         {
@@ -45,13 +45,18 @@ namespace Force_Directed_Maps
                 f.ActOn(this);
             }
             foreach (Node n in NodeList.Values) n.Move();
-
         }
         public bool IsMoving()
         {
             foreach (Node n in NodeList.Values)
             { if (n.Moving) return true; }
             return false;
+        }
+        public Node Hover(Vector2f MousePos)
+        {
+            List<Node> templist = NodeList.Values.ToList<Node>();
+            foreach (Node n in templist) if (n.IsHovering(MousePos)) return n;
+            return null;
         }
     }
 }

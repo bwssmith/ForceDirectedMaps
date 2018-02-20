@@ -57,12 +57,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Code\DrawingSurface.cs">
+    <Compile Include="User controls\DrawingSurface.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Code\Diagram.cs" />
     <Compile Include="Code\UnID.cs" />
-    <Compile Include="Force Actors\ElectrRepulsio_FA.cs" />
+    <Compile Include="Forms\CustomChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CustomChart.Designer.cs">
+      <DependentUpon>CustomChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Force Actors\ElectrRepulsion_FA.cs" />
     <Compile Include="Force Actors\CornerRep_FA.cs" />
     <Compile Include="Forms\GraphScreen.cs">
       <SubType>Form</SubType>
@@ -75,12 +81,39 @@
     <Compile Include="Code\Node.cs" />
     <Compile Include="Code\Global.cs" />
     <Compile Include="Force Actors\GravDown_FA.cs" />
+    <Compile Include="Forms\NodeEditScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NodeEditScreen.Designer.cs">
+      <DependentUpon>NodeEditScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\NodeInspector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\NodeInspector.Designer.cs">
+      <DependentUpon>NodeInspector.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Code\ThickLine.cs" />
     <Compile Include="Code\Vector.cs" />
     <Compile Include="Force Actors\Springs_FA.cs" />
+    <Compile Include="Forms\CreateNewPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreateNewPage.designer.cs">
+      <DependentUpon>CreateNewPage.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Forms\CustomChart.resx">
+      <DependentUpon>CustomChart.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\GraphScreen.resx">
       <DependentUpon>GraphScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NodeEditScreen.resx">
+      <DependentUpon>NodeEditScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\NodeInspector.resx">
+      <DependentUpon>NodeInspector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -91,6 +124,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\CreateNewPage.resx">
+      <DependentUpon>CreateNewPage.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -132,6 +168,7 @@
     <Content Include="OpenTK.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="UserChartsPanel.txt" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
