@@ -11,7 +11,7 @@ namespace Force_Directed_Maps
         public string ForceName() { return "Gravity"; }
         public void ActOn(Diagram d)
         {
-            foreach (Node n in d.NodeList.Values) n.NetDisp += new Vector(0,(float)Globals.NEWTONS_GRAVITATIONAL*-1);
+            foreach (Node n in d.NodeList.Values) n.NetDisp += new Vector(0,n.Mass*(float)Globals.NEWTONS_GRAVITATIONAL);
         }
     }
 }

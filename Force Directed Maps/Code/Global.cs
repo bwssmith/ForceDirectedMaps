@@ -12,9 +12,9 @@ namespace Force_Directed_Maps
         public static int Y_Con = 600;
         public static double HOOKES_CONSTANT = 0.000004;
         public static double ELECTROSTATIC_REPULSION = 20;
-        public static double WALL_BOUNCE = -0.7;
+        public static double WALL_BOUNCE = -0.5;
         public static int ORIGINAL_SPRING_LENGTH = 100;
-        public static double NEWTONS_GRAVITATIONAL = -0.1;
+        public static double NEWTONS_GRAVITATIONAL = 0.01;
         public static double COEFFICIENT_OF_FRICTION =0.995;
         public static double MOUSE_POWER = 1000;
         public static double STOP_CONDITION = 0.2;

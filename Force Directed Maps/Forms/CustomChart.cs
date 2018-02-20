@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Force_Directed_Maps
 {
@@ -44,19 +45,42 @@ namespace Force_Directed_Maps
 
         private void button1_Click(object sender, EventArgs e)
         {
-            List<IForceActor> ChosenForces = new List<IForceActor>();
-            int i = 0;
-            foreach (CheckBox c in ForceChecks)
+            if (NameBox.Text != "")
             {
-                if (c.Checked) ChosenForces.Add(Globals.Forces[i]);
-                i++;
+                //asks the user if they want to save their new chart template
+                bool a = false;
+                Confirmation d = new Confirmation("Do you want to save this new \nchart template?", "Yes", "No", ref a);
+                //if yes, will open a file dialogue
+                List<IForceActor> ChosenForces = new List<IForceActor>();
+                int i = 0;
+                List<int> ChoseArray = new List<int>();
+                foreach (CheckBox c in ForceChecks)
+                {
+                    if (c.Checked)
+                    {
+                        ChosenForces.Add(Globals.Forces[i]);
+                        ChoseArray.Add(i);
+                    }
+                    i++;
+                }
+                if (ChosenForces.Count == 0) MessageBox.Show("Please select some forces to apply to the diagram.");
+                else
+                {
+                    if (a)
+                    {
+                        //StreamWriter sw = new StreamWriter("UserChartsPanel.txt");
+                        string t = "";
+                        foreach (int x in ChoseArray) t += "," + x;
+                        using (StreamWriter sw = File.AppendText("UserChartsPanel.txt"))
+                        {
+                            sw.WriteLine(NameBox.Text + t);
+                        }
+                    }
+                    diagram = new Diagram(ChosenForces);
+                    this.Close();
+                }
             }
-            if (ChosenForces.Count == 0) MessageBox.Show("Please select some forces to apply to the diagram.");
-            else
-            {
-                diagram = new Diagram(ChosenForces);
-                this.Close();
-            }
+            else MessageBox.Show("Please choose a name for your chart type");
         }
     }
 }

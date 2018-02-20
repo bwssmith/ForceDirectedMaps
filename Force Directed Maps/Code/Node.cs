@@ -75,6 +75,7 @@ namespace Force_Directed_Maps
             get { return hLocation.Y; }
             set { hLocation.Y = value; }
         }
+        public int Size { get { return hSize; } }
         #endregion
 
         #region Mechanics for movement

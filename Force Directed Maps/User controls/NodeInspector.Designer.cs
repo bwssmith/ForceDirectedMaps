@@ -36,7 +36,7 @@
             // 
             // ReturnButton
             // 
-            this.ReturnButton.Location = new System.Drawing.Point(0, 67);
+            this.ReturnButton.Location = new System.Drawing.Point(3, 67);
             this.ReturnButton.Name = "ReturnButton";
             this.ReturnButton.Size = new System.Drawing.Size(150, 30);
             this.ReturnButton.TabIndex = 5;
@@ -46,7 +46,7 @@
             // 
             // ColourButton
             // 
-            this.ColourButton.Location = new System.Drawing.Point(120, 31);
+            this.ColourButton.Location = new System.Drawing.Point(123, 31);
             this.ColourButton.Name = "ColourButton";
             this.ColourButton.Size = new System.Drawing.Size(30, 30);
             this.ColourButton.TabIndex = 4;
@@ -57,7 +57,7 @@
             // 
             this.NameBox.AcceptsReturn = true;
             this.NameBox.BackColor = System.Drawing.SystemColors.Control;
-            this.NameBox.Location = new System.Drawing.Point(0, 3);
+            this.NameBox.Location = new System.Drawing.Point(3, 3);
             this.NameBox.Name = "NameBox";
             this.NameBox.Size = new System.Drawing.Size(150, 22);
             this.NameBox.TabIndex = 3;
@@ -66,11 +66,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Menu;
             this.Controls.Add(this.ReturnButton);
             this.Controls.Add(this.ColourButton);
             this.Controls.Add(this.NameBox);
             this.Name = "NodeInspector";
-            this.Size = new System.Drawing.Size(150, 105);
+            this.Size = new System.Drawing.Size(156, 105);
             this.Load += new System.EventHandler(this.NodeInspector_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

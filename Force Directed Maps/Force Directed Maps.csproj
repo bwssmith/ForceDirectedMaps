@@ -57,6 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Confirmation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Confirmation.Designer.cs">
+      <DependentUpon>Confirmation.cs</DependentUpon>
+    </Compile>
     <Compile Include="User controls\DrawingSurface.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -103,6 +109,9 @@
     <Compile Include="Forms\CreateNewPage.designer.cs">
       <DependentUpon>CreateNewPage.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Confirmation.resx">
+      <DependentUpon>Confirmation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomChart.resx">
       <DependentUpon>CustomChart.cs</DependentUpon>
     </EmbeddedResource>
@@ -168,7 +177,9 @@
     <Content Include="OpenTK.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="UserChartsPanel.txt" />
+    <Content Include="UserChartsPanel.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

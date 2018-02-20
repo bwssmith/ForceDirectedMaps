@@ -18,7 +18,7 @@ namespace Force_Directed_Maps
         {
             NodeList = new Dictionary<UnID, Node>();
             Forces = new List<IForceActor>();
-            Title n = new Title("Memes", this);
+            Title n = new Title("Title", this);
             NodeList.Add(n.ID, n);
             //for (int i = 0; i < 6; i++)
             //{ n.AddChild(); System.Threading.Thread.Sleep(20); }
@@ -30,7 +30,7 @@ namespace Force_Directed_Maps
         {
             NodeList = new Dictionary<UnID, Node>();
             Forces = forces;
-            Title n = new Title("Memes", this);
+            Title n = new Title("Title", this);
             NodeList.Add(n.ID, n);
             //for (int i = 0; i < 6; i++){ n.AddChild();}
         }

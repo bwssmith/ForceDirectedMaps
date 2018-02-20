@@ -14,17 +14,19 @@ namespace Force_Directed_Maps
     {
         Node node;
         Diagram diagram;
-        public NodeInspector(Node n, Diagram d)
+        bool change = false;
+        public NodeInspector(Node n, Diagram d, Point p)
         {
             node = n;
             diagram = d;
+            this.Location = p;
             InitializeComponent();
         }
         
         private void NodeInspector_Load(object sender, EventArgs e)
         {
             NameBox.Text = node.Text;
-            this.Location = new Point((int)node.X+20, (int)node.Y);
+            //Color c = new System.Drawing.Color();
         }
 
         private void ColourButton_Click(object sender, EventArgs e)
@@ -33,11 +35,12 @@ namespace Force_Directed_Maps
             {
                 node.hColour = new SFML.Graphics.Color(colorDialog1.Color.R, colorDialog1.Color.G, colorDialog1.Color.B, colorDialog1.Color.A);
             }
+            change = true;
         }
 
         private void ReturnButton_Click(object sender, EventArgs e)
         {
-            node.hColour = new SFML.Graphics.Color(colorDialog1.Color.R, colorDialog1.Color.G, colorDialog1.Color.B, colorDialog1.Color.A);
+            if(change)node.hColour = new SFML.Graphics.Color(colorDialog1.Color.R, colorDialog1.Color.G, colorDialog1.Color.B, colorDialog1.Color.A);
             node.Text = NameBox.Text;
             this.Parent.Controls.Remove(this);
         }

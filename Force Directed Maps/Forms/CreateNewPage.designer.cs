@@ -30,14 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateNewPage));
             this.label1 = new System.Windows.Forms.Label();
-            this.spider = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.CustomChartButton = new System.Windows.Forms.Button();
             this.PresetPanel = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.UserPanel = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.PresetPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -52,31 +50,19 @@
             this.label1.Text = "Please choose a type of graph to make:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // spider
+            // CustomChartButton
             // 
-            this.spider.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.spider.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleTurquoise;
-            this.spider.Location = new System.Drawing.Point(0, 0);
-            this.spider.Name = "spider";
-            this.spider.Size = new System.Drawing.Size(500, 100);
-            this.spider.TabIndex = 1;
-            this.spider.Text = "Spider chart";
-            this.spider.UseVisualStyleBackColor = true;
-            this.spider.Click += new System.EventHandler(this.spider_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(10, 370);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(500, 100);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Custom chart";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.CustomChartButton.BackColor = System.Drawing.Color.LightGray;
+            this.CustomChartButton.Location = new System.Drawing.Point(10, 370);
+            this.CustomChartButton.Name = "CustomChartButton";
+            this.CustomChartButton.Size = new System.Drawing.Size(500, 100);
+            this.CustomChartButton.TabIndex = 2;
+            this.CustomChartButton.Text = "Custom chart";
+            this.CustomChartButton.UseVisualStyleBackColor = false;
+            this.CustomChartButton.Click += new System.EventHandler(this.CustomChartButton_Click);
             // 
             // PresetPanel
             // 
-            this.PresetPanel.Controls.Add(this.spider);
             this.PresetPanel.Location = new System.Drawing.Point(12, 70);
             this.PresetPanel.Name = "PresetPanel";
             this.PresetPanel.Size = new System.Drawing.Size(500, 100);
@@ -130,13 +116,12 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.PresetPanel);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.CustomChartButton);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CreateNewPage";
             this.Text = "Title Page";
             this.Load += new System.EventHandler(this.CreateNewPage_Load);
-            this.PresetPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,8 +130,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        public System.Windows.Forms.Button spider;
+        private System.Windows.Forms.Button CustomChartButton;
         private System.Windows.Forms.Panel PresetPanel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
